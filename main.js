@@ -125,6 +125,9 @@
 // console.log(longestWord("Lorem ipsum dolor sit amet consectetur")); //consectetur
 // console.log(longestWord("salom uzbekistan dunyosi")); // uzbekistan
 
+// bu masala ixtiyoriy
+// https://www.codewars.com/kata/525c65e51bf619685c000059/train/javascript
+
 // getter va setter qo'shamiz mana shu "class"larga
 // class CheckPayment {
 //   constructor(name, isPayment) {
@@ -144,44 +147,66 @@
 
 // let payment = new CheckPayment("Maqsadjon", true);
 // console.log(payment.getStatusPayment());
-//      /////////////////
-class CheckPayment {
-  constructor(name, isPayment) {
-    this.name = "";
-    this.isPayment = true;
-  }
-  get name() {
-    return this.name;
-  }
-  set name({ name, isPayment }) {
-    this.name = name;
-    this.isPayment = isPayment;
-  }
-  get getStatusPayment() {
-    if (this.isPayment) {
-      return `${this.name}, hush kelibsiz!`;
-    } else {
-      return `${this.name} to'lov qilmagansiz. Shuning uchun tizimga kirishga ruxsat etilmagan.`;
-    }
-  }
-}
 
-let payment = new CheckPayment("Maqsadjon", true);
-console.log(payment.getStatusPayment);
+//  1-class    /////////////////
+// class CheckPayment {
+//   constructor(name, isPayment) {
+//     this._name = "";
+//     this._isPayment = true;
+//   }
+//   get name() {
+//     return this._name;
+//   }
+//   set name(name) {
+//     this._name = name;
+//   }
+//   get isPayment() {
+//     return this._isPayment;
+//   }
+//   set isPayment(isPayment) {
+//     this._isPayment = isPayment;
+//   }
+//   get getStatusPayment() {
+//     if (this.isPayment) {
+//       return `${this.name} hush kelibsiz!`;
+//     } else {
+//       return `${this.name} to'lov qilmagansiz. Shuning uchun tizimga kirishga ruxsat berilmagan.`;
+//     }
+//   }
+// }
 
-class CircleArea {
-  constructor(radius) {
-    this.radius = radius;
-  }
-  getArea() {
-    return Math.PI * this.radius ** 2;
-  }
-}
-let radius = new CircleArea(10);
-console.log(radius.getArea());
+// let payment = new CheckPayment("Maqsadjon", true);
+// console.log(payment.getStatusPayment);
 
-// bu masala ixtiyoriy
-// https://www.codewars.com/kata/525c65e51bf619685c000059/train/javascript
+// class CircleArea {
+//   constructor(radius) {
+//     this.radius = radius;
+//   }
+//   getArea() {
+//     return Math.PI * this.radius ** 2;
+//   }
+// }
+// let radius = new CircleArea(10);
+// console.log(radius.getArea());
+
+//  2-class  ////////////////////////
+
+// class CircleArea {
+//   constructor(radius) {
+//     this._radius = radius;
+//   }
+//   get radius() {
+//     return this._radius;
+//   }
+//   set radius(_radius) {
+//     this._radius = radius;
+//   }
+//   get getArea() {
+//     return Math.PI * this.radius ** 2;
+//   }
+// }
+// let radius = new CircleArea(10);
+// console.log(radius.getArea);
 
 // O'tgan darsda vazifasidagi CLASS larni get va set da yasalgani:
 // CLASS-1
@@ -202,6 +227,37 @@ console.log(radius.getArea());
 // }
 // let cartoon = new cartoonCompany("Kunfu panda4", 2024, "DreamWorks");
 // console.log(cartoon.getCartoon());
+
+//     ////////////////////
+// class Cartoons {
+//   constructor(name, year) {
+//     this._name = name;
+//     this._year = year;
+//   }
+// }
+// class cartoonCompany extends Cartoons {
+//   constructor(name, year, company) {
+//     super(name, year);
+//     this._company = company;
+//   }
+//   get name() {
+//     return this._name;
+//   }
+//   set name(_name) {
+//     this._name = name;
+//   }
+//   get year() {
+//     return this._year;
+//   }
+//   set year(_year) {
+//     this.year = year;
+//   }
+//   get getCartoon() {
+//     return `${this.name} is released in ${this.year} by ${this.company}`;
+//   }
+// }
+// let cartoon = new cartoonCompany("Kunfu panda4", 2024, "DreamWorks");
+// console.log(cartoon.getCartoon);
 
 // // CLASS-2
 // class Moives {
@@ -233,11 +289,56 @@ console.log(radius.getArea());
 // console.log(result1.isDirector());
 // console.log(result2.isDirector());
 
+//      ////////////////////////////
+// class Moives {
+//   constructor(name, company) {
+//     this._name = name;
+//     this._company = company;
+//   }
+//   Director() {
+//     return `Joss Whedon`;
+//   }
+// }
+// class getDirector extends Moives {
+//   constructor(name, company, director) {
+//     super(name, company);
+//     this.director = director;
+//   }
+//   get name() {
+//     return this._name;
+//   }
+//   set name(name) {
+//     this._name = name;
+//   }
+//   get company() {
+//     return this._company;
+//   }
+//   set company(company) {
+//     this._company = company;
+//   }
+//   get isDirector() {
+//     if (this.Director() == this.director) {
+//       return `${this.name} made by ${
+//         this.company
+//       } company and director is ${this.Director()}`;
+//     }
+//     return `${this.Director()} isn't director of ${this.name}`;
+//   }
+// }
+// let result1 = new getDirector("Avengers", "Marvel", "Joss Whedon");
+// let result2 = new getDirector("Kunfu panda 4", "DreamWorks", "Mike Mitchell");
+
+// console.log(result1.isDirector);
+// console.log(result2.isDirector);
+
 // CLASS-3
 // let num = +prompt(`0 dan 9 gacha bitta tahminiy son kiriting`);
 // let random = Math.floor(Math.random() * 10);
 // class randomNumber {
-//   constructor() {}
+//   constructor() {
+//     this._num = 0;
+//     this._random = Math.floor(Math.random() * 10);
+// }
 //   isEqual() {
 //     if ((num = random)) {
 //       return `Tabriklaymiz siz latorayani yutdingiz!`;
@@ -247,3 +348,26 @@ console.log(radius.getArea());
 // }
 // let result = new randomNumber();
 // console.log(result.isEqual());
+
+//     /////////////////
+// let num = +prompt(`0 dan 9 gacha bitta tahminiy son kiriting`);
+// class RandomNumber {
+//   constructor() {
+//     this._number = 0;
+//     this._random = Math.floor(Math.random() * 10);
+//   }
+
+//   set number(value) {
+//     this._number = value;
+//   }
+//   get isEqual() {
+//     if (this._number === this._random) {
+//       return `Tabriklaymiz siz latoreyani yutdingiz!`;
+//     }
+//     return `Kechirasiz, siz kiritgan son to'g'ri kelmadi, qaytadan urinib ko'ring :)`;
+//   }
+// }
+
+// let result = new RandomNumber();
+// result.num = num;
+// console.log(result.isEqual);
